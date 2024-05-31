@@ -1,6 +1,3 @@
-#Set Variables
-function reinstall-RDAgent{
-
     Param(
        [parameter(Mandatory=$true)][String]$RdsRegistrationInfotoken
     )
@@ -28,4 +25,3 @@ function reinstall-RDAgent{
     Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $WVDAgentInstaller", "/quiet", "/qn", "/norestart", "/passive", "REGISTRATIONTOKEN=$RdsRegistrationInfotoken", "/l* C:\Users\AgentInstall.txt" | Wait-process
 
     Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $WVDBootLoaderInstaller", "/quiet", "/qn", "/norestart", "/passive", "/l* C:\Users\AgentBootLoaderInstall.txt" | Wait-process
-}
